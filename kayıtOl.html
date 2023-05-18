@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol</title>
+    <link rel="icon" type="image/png" href="images/software-engineer (1).png">
+    <link rel="stylesheet" href="style.css">
+        
+</head>
+
+<body>
+
+    <nav class="nav-container">
+        <img src="images/software-engineer (1).png" width="50" height="50" alt="Web site logo" id="logo" style="cursor: pointer;" class="logo"/> 
+            
+        <div class="hamburger">
+          <span class="lines"></span>
+          <span class="lines"></span>
+          <span class="lines"></span>
+        </div>
+  
+        <ul id="nav-links">
+          <li><a href="#" class="links">Anasayfa</a></li>
+          <li><a href="#" class="links">Forum</a></li>
+          <li><a href="#" class="links">İletişim</a></li>
+          <li><a href="#" class="links">Giriş Yap</a></li>
+          <li><a href="#" class="links">Kayıt Ol</a></li>
+        </ul>
+  
+      </nav>
+  
+    <div class="container">
+        <form action="signup.php" method="post">
+            <h2>Sign Up</h2>
+            <label for="username" >Kullanıcı Adı</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password" >Şifre</label>
+            <input type="password" id="password" name="password" required>
+            <label for="email" >Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="fullname" >İsim Soyisim</label>
+            <input type="text" id="fullname" name="fullname" required>
+            <button type="submit" id="button">Kayıt Ol</button>
+        </form>
+        <p>Hesabın var mı? <a href="login.html">Giriş Yap</a></p>
+
+    </div>
+    <?php include 'signup.php'; ?>
+</body>
