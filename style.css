@@ -1,0 +1,396 @@
+.blog-list {
+    display: flex;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 800px;
+}
+
+.blog-item {
+    width: calc(50% - 10px);
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.blog-item:last-child {
+    margin-right: 0;
+}
+
+.active {
+    transform: translateX(-50%);
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+/* Genel stiller */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: #6b3fa0;
+}
+
+a:hover {
+    color: #523583;
+}
+
+/* Başlık */
+header {
+    background-color: rgb(120, 59, 194);
+    color: #fff;
+    padding: 1em;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Menü */
+nav {
+    background-color: #6b3fa0;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 1em;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: #f4f4f4;
+}
+
+/* İçerik */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+article {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1em;
+    width: calc(50% - 1em);
+    padding: 1em;
+    transition: all 0.2s ease;
+}
+
+article:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+article h2 {
+    margin-top: 0;
+}
+
+article p {
+    margin-bottom: 1em;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: #6b3fa0;
+    color: #fff;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.read-more:hover {
+    background-color: #523583;
+}
+
+.read-more i {
+    margin-left: 0.5em;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Responsive tasarım */
+@media only screen and (max-width: 600px) {
+    header {
+        display: block;
+    }
+
+    nav {
+        margin-top: 1em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin-bottom: 0.5em;
+    }
+
+    main {
+        padding: 0.5em;
+    }
+
+    article {
+        width: 100%;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-top: 10px;
+    color: rgb(234, 226, 240);
+    font-family: sans-serif;
+}
+
+form input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: rgb(31, 4, 53);
+    color: rgb(251, 251, 251);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+h2 {
+    color: rgb(31, 4, 53);
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #9c68bb;
+}
+
+p {
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    text-decoration: none;
+    text-align: center;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    background-color: rgb(69, 48, 95);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+
+nav {
+
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    padding: 15px 50px;
+    color: rgb(121, 92, 144);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+li {
+    width: 110px;
+
+}
+
+li a {
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 20px 15px;
+    transition: 0.5s;
+    color: #ede7e7;
+}
+
+li a:hover {
+    color: rgb(156, 64, 184);
+    border-bottom: 4px #e0dede solid;
+    transition: 0.5s;
+}
+
+.hide {
+    top: 70px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        cursor: pointer;
+        padding: 10px;
+        margin-right: -10px;
+    }
+
+    .lines {
+        display: block;
+        background-color: rgb(218, 200, 203);
+        height: 2px;
+        width: 35px;
+    }
+
+    .lines-rotate {
+
+        background-color: rgb(197, 136, 235);
+        border-radius: 5px;
+    }
+
+    nav {
+        position: relative;
+        padding: 15px 20px;
+    }
+
+    ul {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -300px;
+        right: 0;
+        background-color: rgb(225, 213, 215);
+        padding: 35 px 0;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0px 5px 5px rgb(175, 102, 209);
+
+    }
+
+    li a {
+        color: #672b6b;
+    }
+
+    li {
+        text-align: center;
+        width: 90vw;
+    }
+
+    li a:hover {
+        font-weight: bold;
+        color: #3f3b3b;
+        border: none;
+        letter-spacing: 3px;
+    }
+}
+
+.burger,
+.menu,
+.background {
+    position: fixed;
+}
+
+
+.burger {
+    z-index: 4;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body.open .burger {
+    background-color: #cb8c8c;
+}
+
+.background {
+    position: fixed;
+}
