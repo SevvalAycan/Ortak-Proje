@@ -48,3 +48,35 @@ function scroll(direction) {
 // sol ve sağ butonlara tıklama olayları ekle
 leftButton.addEventListener('click', () => scroll('left'));
 rightButton.addEventListener('click', () => scroll('right'));
+var button = document.getElementById("blog-button");
+
+button.addEventListener("click", function () {
+    if (!isUserLoggedIn()) {
+        alert("Giriş yapmanız gerekiyor!");
+    } else {
+        // Blog yazısı ekleme işlemleri burada gerçekleştirilir.
+        // Blog yazısı ekleme kodları buraya gelecek.
+    }
+});
+
+var button = document.getElementById("blog-button");
+
+button.addEventListener("click", function () {
+    if (!isUserLoggedIn()) {
+        window.location.href = "giris-yap.html"; // Giriş yapma ekranının URL'sini buraya yazın
+    } else {
+        // Blog yazısı ekleme işlemleri burada gerçekleştirilir.
+        // Blog yazısı ekleme kodları buraya gelecek.
+    }
+});
+
+function isUserLoggedIn() {
+    // Kullanıcının giriş yapmış olup olmadığını kontrol eden bir fonksiyon.
+    // Gerçek kullanıcı oturumu durumunu burada kontrol etmelisiniz.
+    // Örneğin, kullanıcının oturum açtığı bir kullanıcı yönetimi sistemi varsa,
+    // bu fonksiyon oturum durumunu kontrol etmeli ve doğru değeri döndürmelidir.
+    // Eğer kullanıcı giriş yapmışsa true, yapmamışsa false döndürmelidir.
+}
+button.addEventListener("click", function () {
+    window.location.href = "giris-yap.html"; // Yönlendirilecek sayfanın URL'sini buraya yazın
+});
