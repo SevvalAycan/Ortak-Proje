@@ -7,61 +7,56 @@ $sifre_err = "";
 $sifretkr_err = "";
 if (isset($_POST["kaydet"])) {
 
-
-    //Kullanıcı adı doğrulama
+    // Kullanıcı adı doğrulama
     if (empty($_POST["kullanici"])) {
-        $name_err = "Kullanıcı adı boş geçilmez";
+        $name_err = "Kullanıcı adı boş geçilemez";
     } else if (strlen($_POST["kullanici"]) < 6) {
-        $name_err = "Kullanıcı adı altı harften boş olamaz";
+        $name_err = "Kullanıcı adı en az altı harften oluşmalıdır";
     } else if (!preg_match('/^[a-z\d_]{5,20}$/i', $_POST["kullanici"])) {
-        echo "Sadece harfler ve sayılar kullanınız.";
+        $name_err = "Sadece harfler ve sayılar kullanılabilir";
     } else {
         $name = $_POST["kullanici"];
     }
-    //Email Doğrulama
+
+    // Email doğrulama
     if (empty($_POST["email"])) {
-        $email_err = "Email boş geçilmez";
+        $email_err = "Email boş geçilemez";
     } else {
         $email = $_POST["email"];
     }
-    //Sifre Doğrulama
+
+    // Şifre doğrulama
     if (empty($_POST["sifre"])) {
-        $sifre_err = "Şifre boş geçilmez";
+        $sifre_err = "Şifre boş geçilemez";
     } else {
         $password = $_POST["sifre"];
     }
 
-    //Parola Tekrar Doğrusu
-
+    // Şifre tekrar doğrulama
     if (empty($_POST["sifretkr"])) {
-        $sifretkr_err = "Şifre tekraı boş geçilmez";
+        $sifretkr_err = "Şifre tekrarı boş geçilemez";
     } else if ($_POST["sifre"] != $_POST["sifretkr"]) {
         $sifretkr_err = "Şifreler eşleşmiyor";
     } else {
         $sifretkr = $_POST["sifretkr"];
     }
 
-
-
-
-
-    //Giriş Eylemi
-    $name = $_POST["kullanici"];
-    $email = $_POST["email"];
-    $password = $_POST["sifre"];
-
-    if (isset($name) && isset($email) && isset($password)) {
+    // Kayıt işlemi
+    if (isset($name) && isset($email) && isset($password) && isset($sifretkr)) {
+        $name = $_POST["kullanici"];
+        $email = $_POST["email"];
+        $password = password_hash($_POST["sifre"], PASSWORD_DEFAULT);
 
         $ekle = "INSERT INTO kullanicilar(kullanici, email, sifre) VALUES ('$name','$email','$password')";
         $calistirekle = mysqli_query($baglanti, $ekle);
         if ($calistirekle) {
-            echo '<div class="alert alert-succes" role="alert">
-  succes it out!
-</div>';
+            echo '<div class="alert alert-success" role="alert">
+                    Kayıt başarılı!
+                </div>';
         } else {
-            echo '<div class="alert alert-alert" role="alert">
-   check it out!
-  </div>';
+            echo '<div class="alert alert-danger" role="alert">
+                    Kayıt sırasında bir hata oluştu!
+                </div>';
         }
         mysqli_close($baglanti);
     }
@@ -94,7 +89,7 @@ if (isset($_POST["kaydet"])) {
 
         <ul id="nav-links">
             <li><a href="neonblog.html" class="links">Anasayfa</a></li>
-            <li><a href="#" class="links">Forum</a></li>
+            <li><a href="profile.php" class="links">Profil</a></li>
             <li><a href="https://www.bandirma.edu.tr/tr/www/Iletisim" class="links">İletişim</a></li>
             <li><a href="giris-yap.php" class="links">Giriş Yap</a></li>
             <li><a href="kaydol.php" class="links">Kayıt Ol</a></li>
@@ -105,33 +100,25 @@ if (isset($_POST["kaydet"])) {
     <div class="container">
         <form action="kaydol.php" method="POST">
             <h2>Kaydol</h2>
-            <label for=kullanici>Kullanıcı Adı</label>
-            <input type="text" name="kullanici" class="form-control is invalid" placeholder="Kullanıcı Adı" required>
+            <label for="kullanici">Kullanıcı Adı</label>
+            <input type="text" name="kullanici" class="form-control is-invalid" placeholder="Kullanıcı Adı" required>
             <div class="invalid-feedback">
-                <?php
-                echo $name_err;
-                ?>
+                <?php echo $name_err; ?>
             </div>
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control is invalid" placeholder="E-posta" required>
+            <input type="email" name="email" class="form-control is-invalid" placeholder="E-posta" required>
             <div class="invalid-feedback">
-                <?php
-                echo $email_err;
-                ?>
+                <?php echo $email_err; ?>
             </div>
             <label for="sifre">Şifre</label>
-            <input type="password" name="sifre" class="form-control is invalid" placeholder="Şifre" required>
+            <input type="password" name="sifre" class="form-control is-invalid" placeholder="Şifre" required>
             <div class="invalid-feedback">
-                <?php
-                echo $sifre_err;
-                ?>
+                <?php echo $sifre_err; ?>
             </div>
             <label for="sifretkr">Şifre Tekrarı</label>
-            <input type="password" name="sifretkr" class="form-control is invalid" placeholder="Şifre Tekrarı" required>
+            <input type="password" name="sifretkr" class="form-control is-invalid" placeholder="Şifre Tekrarı" required>
             <div class="invalid-feedback">
-                <?php
-                echo $sifretkr_err;
-                ?>
+                <?php echo $sifretkr_err; ?>
             </div>
 
             <button type="submit" name="kaydet" id="button">Kayıt Ol</button>
