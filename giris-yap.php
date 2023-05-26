@@ -71,7 +71,7 @@ if (isset($_POST["giris"])) {
         </div>
 
         <ul id="nav-links">
-            <li><a href="neonblog.html" class="links">Anasayfa</a></li>
+            <li><a href="anasayfa.php" class="links">Anasayfa</a></li>
             <li><a href="profile.php" class="links">Profil</a></li>
             <li><a href="https://www.bandirma.edu.tr/tr/www/Iletisim" class="links">İletişim</a></li>
             <li><a href="giris-yap.php" class="links">Giriş Yap</a></li>
@@ -83,16 +83,14 @@ if (isset($_POST["giris"])) {
         <form action="giris-yap.php" method="POST">
             <h2>Giriş Yap</h2>
             <label for="kullanici">Kullanıcı Adı</label>
-            <input type="text" name="kullanici"
-                class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" placeholder="Kullanıcı Adı"
-                required>
+            <input type="text" name="kullanici" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>"
+                placeholder="Kullanıcı Adı" required>
             <div class="invalid-feedback">
                 <?php echo $name_err; ?>
             </div>
             <label for="sifre">Şifre</label>
-            <input type="password" name="sifre"
-                class="form-control <?php echo (!empty($sifre_err)) ? 'is-invalid' : ''; ?>" placeholder="Şifre"
-                required>
+            <input type="password" name="sifre" class="form-control <?php echo (!empty($sifre_err)) ? 'is-invalid' : ''; ?>"
+                placeholder="Şifre" required>
             <div class="invalid-feedback">
                 <?php echo $sifre_err; ?>
             </div>
