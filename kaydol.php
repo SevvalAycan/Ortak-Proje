@@ -43,9 +43,9 @@ if (isset($_POST["kaydet"])) {
 
     // Kayıt işlemi
     if (isset($name) && isset($email) && isset($password) && isset($sifretkr)) {
-        $name = $_POST["kullanici"];
-        $email = $_POST["email"];
-        $password = password_hash($_POST["sifre"], PASSWORD_DEFAULT);
+        $name=$_POST["kullanici"];
+        $email=$_POST["email"];
+        $password=password_hash($_POST["sifre"],PASSWORD_DEFAULT);
 
         $ekle = "INSERT INTO kullanicilar(kullanici, email, sifre) VALUES ('$name','$email','$password')";
         $calistirekle = mysqli_query($baglanti, $ekle);
@@ -88,7 +88,7 @@ if (isset($_POST["kaydet"])) {
         </div>
 
         <ul id="nav-links">
-            <li><a href="neonblog.html" class="links">Anasayfa</a></li>
+            <li><a href="anasayfa.php" class="links">Anasayfa</a></li>
             <li><a href="profile.php" class="links">Profil</a></li>
             <li><a href="https://www.bandirma.edu.tr/tr/www/Iletisim" class="links">İletişim</a></li>
             <li><a href="giris-yap.php" class="links">Giriş Yap</a></li>
