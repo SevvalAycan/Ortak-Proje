@@ -61,8 +61,11 @@ if (isset($_POST["giris"])) {
 
 <body>
     <nav class="nav-container">
+
+
         <img src="neonlogo.png" width="50" height="50" alt="Web site logo" id="logo" style="cursor: pointer;"
             class="logo" />
+
 
         <div class="hamburger">
             <span class="lines"></span>
@@ -77,20 +80,42 @@ if (isset($_POST["giris"])) {
             <li><a href="giris-yap.php" class="links">Giriş Yap</a></li>
             <li><a href="kaydol.php" class="links">Kayıt Ol</a></li>
         </ul>
+
     </nav>
+
+    <script>
+        let hamburger = document.querySelector('.hamburger');
+        let navLinks = document.getElementById('nav-links');
+        let links = document.querySelectorAll('.links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('hide');
+            hamburger.classList.toggle('lines-rotate');
+        });
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', () => {
+                navLinks.classList.toggle('hide');
+            });
+        }
+    </script>
+
+
 
     <div class="container">
         <form action="giris-yap.php" method="POST">
             <h2>Giriş Yap</h2>
             <label for="kullanici">Kullanıcı Adı</label>
-            <input type="text" name="kullanici" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>"
-                placeholder="Kullanıcı Adı" required>
+            <input type="text" name="kullanici"
+                class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" placeholder="Kullanıcı Adı"
+                required>
             <div class="invalid-feedback">
                 <?php echo $name_err; ?>
             </div>
             <label for="sifre">Şifre</label>
-            <input type="password" name="sifre" class="form-control <?php echo (!empty($sifre_err)) ? 'is-invalid' : ''; ?>"
-                placeholder="Şifre" required>
+            <input type="password" name="sifre"
+                class="form-control <?php echo (!empty($sifre_err)) ? 'is-invalid' : ''; ?>" placeholder="Şifre"
+                required>
             <div class="invalid-feedback">
                 <?php echo $sifre_err; ?>
             </div>
@@ -98,6 +123,13 @@ if (isset($_POST["giris"])) {
         </form>
         <p>Hesabın yok mu? <a href="kaydol.php">Kaydol</a></p>
     </div>
+
+
+
+
+
+
+
 </body>
 
 </html>

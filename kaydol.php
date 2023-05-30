@@ -43,9 +43,9 @@ if (isset($_POST["kaydet"])) {
 
     // Kayıt işlemi
     if (isset($name) && isset($email) && isset($password) && isset($sifretkr)) {
-        $name=$_POST["kullanici"];
-        $email=$_POST["email"];
-        $password=password_hash($_POST["sifre"],PASSWORD_DEFAULT);
+        $name = $_POST["kullanici"];
+        $email = $_POST["email"];
+        $password = password_hash($_POST["sifre"], PASSWORD_DEFAULT);
 
         $ekle = "INSERT INTO kullanicilar(kullanici, email, sifre) VALUES ('$name','$email','$password')";
         $calistirekle = mysqli_query($baglanti, $ekle);
@@ -78,8 +78,11 @@ if (isset($_POST["kaydet"])) {
 <body>
 
     <nav class="nav-container">
+
+
         <img src="neonlogo.png" width="50" height="50" alt="Web site logo" id="logo" style="cursor: pointer;"
             class="logo" />
+
 
         <div class="hamburger">
             <span class="lines"></span>
@@ -96,6 +99,24 @@ if (isset($_POST["kaydet"])) {
         </ul>
 
     </nav>
+
+    <script>
+        let hamburger = document.querySelector('.hamburger');
+        let navLinks = document.getElementById('nav-links');
+        let links = document.querySelectorAll('.links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('hide');
+            hamburger.classList.toggle('lines-rotate');
+        });
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', () => {
+                navLinks.classList.toggle('hide');
+            });
+        }
+    </script>
+
 
     <div class="container">
         <form action="kaydol.php" method="POST">
