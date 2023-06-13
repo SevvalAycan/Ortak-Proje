@@ -59,6 +59,7 @@ if (isset($_POST["kaydet"])) {
                 </div>';
         }
         mysqli_close($baglanti);
+
     }
 }
 ?>

@@ -11,52 +11,50 @@ include("baglanti.php");
   <title>Bandırma Mühendisliği</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+  
+    .blog-post {
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .blog-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
     }
 
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+    .blog-content {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 5px;
     }
 
-    th {
-      background-color: #f2f2f2;
-    }
 
-    th:first-child,
-    td:first-child {
-      width: 20%;
-    }
+  .zoomed {
+    font-size: 1.2em;
+  }
+</style>
 
-    th:nth-child(2),
-    td:nth-child(2) {
-      width: 50%;
-    }
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var tableCells = document.querySelectorAll("th, td");
+    tableCells.forEach(function(cell) {
+      cell.addEventListener("click", function() {
+        this.classList.toggle("zoomed");
+      });
+    });
+  });
+</script>
 
-    th:last-child,
-    td:last-child {
-      width: 30%;
-    }
-  </style>
 </head>
 
 <body>
 
   <nav class="nav-container">
-
-
     <img src="neonlogo.png" width="50" height="50" alt="Web site logo" id="logo" class="logo" />
-
-
-
     <div class="hamburger">
       <span class="lines"></span>
       <span class="lines"></span>
@@ -89,37 +87,37 @@ include("baglanti.php");
       });
     }
   </script>
+    
+      <?php
+include("baglanti.php");
 
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Başlık</th>
-          <th>Metin</th>
-          <th>Yazan Kişi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        // Başlıkları, metinleri ve rumuzları al
-        $sorgu = "SELECT baslik, metin, rumuz FROM blog";
-        $calistir_sorgu = mysqli_query($baglanti, $sorgu);
+$secim = "SELECT * FROM blog";
+$calistir = mysqli_query($baglanti, $secim);
+$kayitsayisi = mysqli_num_rows($calistir);
 
-        // Veritabanından gelen verileri tablo içinde döngüyle yazdır
-        while ($row = mysqli_fetch_assoc($calistir_sorgu)) {
-          $baslik = $row['baslik'];
-          $metin = $row['metin'];
-          $yazanKisi = $row['rumuz'];
-
-          echo '<tr>
-                  <td>' . $baslik . '</td>
-                  <td>' . $metin . '</td>
-                  <td>' . $yazanKisi . '</td>
-                </tr>';
-        }
-
-        mysqli_close($baglanti);
+if ($kayitsayisi > 0) {
+    while ($ilgilikayit = mysqli_fetch_assoc($calistir)) {
+        $baslik = $ilgilikayit["baslik"];
+        $metin = $ilgilikayit["metin"];
+        $rumuz = $ilgilikayit["rumuz"];
         ?>
+
+        <div class="blog-post">
+            <h2 class="blog-title"><?php echo $baslik; ?></h2>
+            <p class="blog-content"><strong></strong> <?php echo $metin; ?></p>
+            <p class="blog-content"><strong>Rumuz:</strong> <?php echo $rumuz; ?></p>
+        </div>
+        <br>
+
+        <?php
+    }
+} else {
+    echo "Hiç kayıt bulunamadı.";
+}
+
+mysqli_close($baglanti);
+?>
+
       </tbody>
     </table>
   </div>
